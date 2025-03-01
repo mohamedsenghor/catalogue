@@ -45,20 +45,22 @@ spring.profiles.active=db # ou hashmap
 ### Construction de l'application
 
 ```bash
-./mvnw clean package
+./mvnw clean install
 ```
+Afin de s'assurer que tous les packages sont bien présents
 
 ### Exécution de l'application
 
-- **Avec le profil ```db``` (MySQL)** :
+- **Avec le profil ```db``` (MySQL)** : Ouvrir le fichier application.properties et Mettre le profile actif à **db** d'abord avant de lancer l'application
 
-```bash
-java -jar target/catalogue-0.0.1-SNAPSHOT.jar
+```properties
+spring.profiles.active=db
 ```
-Avec le profil hashmap :
 
-```bash
-java -jar -Dspring.profiles.active=hashmap target/catalogue-0.0.1-SNAPSHOT.jar
+- **Avec le profil hashmap** : Ouvrir le fichier application.properties et Mettre le profile actif à **hashmap** d'abord avant de lancer l'application
+
+```properties
+spring.profiles.active=hashmap
 ```
 
 ### Accès à l'application
@@ -98,7 +100,7 @@ L'application sera accessible à l'adresse http://localhost:8080/views/products.
 
 - Liste des produits : Affiche tous les produits dans un tableau.
 - Ajout de produit : Permet d'ajouter un nouveau produit.
-- Modification de produit : Permet de modifier un produit existant.
+  - Modification de produit : Permet de modifier un produit existant.
 - Suppression de produit : Permet de supprimer un produit.
 - Détails du produit : Affiche les détails d'un produit.
 - Gestion des erreurs : Affiche les erreurs de validation côté client et serveur.
