@@ -1,0 +1,24 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      DB_USER: catalogue_dev
+      DB_PASSWORD: catalogue_dev_pwd
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: catalogue_db
+      SPRING_PROFILES_ACTIVE: db # ou hashmap
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD:
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+volumes:
+  mysql_data:
